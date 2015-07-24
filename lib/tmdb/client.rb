@@ -17,7 +17,7 @@ module TMDB
     end
 
     # simple function for testing that all of the modules work
-    def make_thing(page, id
+    def make_thing(page, id)
       title(page, id)
       poster(page, id)
       release(page, id)
