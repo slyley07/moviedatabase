@@ -1,0 +1,48 @@
+<header>
+  Latest Releases
+</header>
+
+<div class="container">
+  <!-- the navigation menu -->
+  <menu class="menu">
+    <div class="buttons">
+      <button type="button" name="left" class="left">
+        <img src="assets/chevron-left-8x.png">
+      </button>
+    </div>
+
+    <div class="buttons">
+      <button type="button" name="right" class="right">
+        <img src="assets/chevron-right-8x.png">
+      </button>
+    </div>
+  </menu>
+
+  <!-- the container for all of the movies -->
+  <div class="movies">
+    <!-- loop for retrieving 19 movies from the given page -->
+    <% (0..19).each do |id| %>
+
+      <!-- div containing the movie poster image and the title -->
+      <!-- ties to the showTitle function on mouse over, which shows the title and removes opacity from the poster image -->
+      <!-- ties to the hideTitle function on mouse out, which hides the title and returns the opacity on the image to 1 -->
+      <div class="both" onmouseover="showTitle(<%= id %>)" onmouseout="hideTitle(<%= id %>)">
+
+        <!-- an individual instance of a movie -->
+        <div class="movie">
+            <!-- calling the poster function on the @client variable, with a default page value of one and the id dynamically generated through the loop -->
+            <!-- adds a dynamically generated class to each image (for individial reference) -->
+            <img src="<%= @client.poster(1, id) %>" class="images <%= id %>">
+        </div>
+
+        <!-- an individual instance of a movie title -->
+        <p class="title <%= id %>">
+
+          <!-- calling the title function on the @client variable -->
+          <!-- adds a dynamically generated class to each title (for individual reference) -->
+          <%= @client.title(1, id) %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
